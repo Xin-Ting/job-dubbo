@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.8.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>org.example</groupId>
+    <artifactId>job-rebuild-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>job-rebuild-controller</module>
+        <module>job-rebuild-service-rl</module>
+        <module>job-rebuild-service-mail</module>
+        <module>job-rebuild-api</module>
+        <module>job-rebuild-pojo</module>
+        <module>job-rebuild-dal</module>
+        <module>job-rebuild-exception</module>
+        <module>job-rebuild-service-cache</module>
+        <module>job-rebuild-interface</module>
+    </modules>
+
+    <!--自定义标签-->
+    <properties>
+        <project.job.version>1.0-SNAPSHOT</project.job.version>
+    </properties>
+
+    <!--依赖管理-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>job-rebuild-pojo</artifactId>
+                <version>${project.job.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>job-rebuild-dal</artifactId>
+                <version>${project.job.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>job-rebuild-service-cache</artifactId>
+                <version>${project.job.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>job-rebuild-service-mail</artifactId>
+                <version>${project.job.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>job-rebuild-service-rl</artifactId>
+                <version>${project.job.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>job-rebuild-exception</artifactId>
+                <version>${project.job.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>job-rebuild-api</artifactId>
+                <version>${project.job.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
