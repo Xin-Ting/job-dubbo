@@ -1,12 +1,12 @@
 package org.example.job.controller.v1;
 
 
+import org.apache.dubbo.config.annotation.Reference;
 import org.example.job.api.UserControllerApi;
+import org.example.job.interfaces.service.UserService;
 import org.example.job.pojo.model.dto.AuthDTO;
 import org.example.job.pojo.model.dto.UserDTO;
 import org.example.job.pojo.model.result.Result;
-import org.example.job.service.rl.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController implements UserControllerApi {
 
-    @Autowired
+    @Reference
     private UserService userService;
 
 

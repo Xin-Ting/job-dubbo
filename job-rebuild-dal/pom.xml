@@ -13,9 +13,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>job-rebuild-pojo</artifactId>
-        </dependency>
+        <groupId>org.example</groupId>
+        <artifactId>job-rebuild-pojo</artifactId>
+    </dependency>
 
         <dependency>
             <groupId>mysql</groupId>

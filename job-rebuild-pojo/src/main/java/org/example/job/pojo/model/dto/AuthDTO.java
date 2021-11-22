@@ -1,13 +1,13 @@
 package org.example.job.pojo.model.dto;
 
 
-
+import java.io.Serializable;
 
 /**
  * @author 85217
  * 业务对象
  */
-public class AuthDTO {
+public class AuthDTO implements Serializable {
     /**
      * 用户名
      */

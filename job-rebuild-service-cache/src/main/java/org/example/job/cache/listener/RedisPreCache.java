@@ -1,9 +1,9 @@
 package org.example.job.cache.listener;
 
 
-import org.example.job.cache.Cache;
 import org.example.job.dal.UserRepository;
 import org.example.job.dal.entity.UserEntity;
+import org.example.job.interfaces.cache.Cache;
 import org.example.job.pojo.constans.RedisConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;

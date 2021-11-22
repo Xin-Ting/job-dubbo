@@ -1,7 +1,7 @@
 package org.example.job.cache.impl;
 
 
-import org.example.job.cache.Cache;
+import org.example.job.interfaces.cache.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;

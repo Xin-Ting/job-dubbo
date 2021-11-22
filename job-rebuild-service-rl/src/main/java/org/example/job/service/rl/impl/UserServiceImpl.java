@@ -1,9 +1,11 @@
 package org.example.job.service.rl.impl;
 
 
-import org.example.job.cache.Cache;
+import org.apache.dubbo.config.annotation.Service;
 import org.example.job.dal.UserRepository;
 import org.example.job.dal.entity.UserEntity;
+import org.example.job.interfaces.cache.Cache;
+import org.example.job.interfaces.service.UserService;
 import org.example.job.mail.MailUtil;
 import org.example.job.pojo.constans.RedisConstants;
 import org.example.job.pojo.constans.UserConstants;
@@ -12,13 +14,11 @@ import org.example.job.pojo.model.dto.AuthDTO;
 import org.example.job.pojo.model.dto.UserDTO;
 import org.example.job.pojo.model.enums.ResultCode;
 import org.example.job.pojo.model.result.Result;
-import org.example.job.service.rl.UserService;
 import org.example.job.service.util.ValidateCode;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.Optional;
@@ -103,6 +103,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result login(AuthDTO authDTO) {
         Optional<AuthDTO> optional = Optional.ofNullable(authDTO);
+
         //1.校验用户输入参数是否为null,如果为null抛出业务异常.
         if (!optional.isPresent()) {
             throw new BusinessException(ResultCode.PARAM_INVALID);
@@ -110,24 +111,29 @@ public class UserServiceImpl implements UserService {
         AuthDTO dto = optional.get();
         String username = dto.getUsername();
         String password = dto.getPassword();
+
         //2.判断用户名是否正确（使用redis的set 集合判断.如果重复即为存在，不重复则不存在，抛出异常用户名或密码错误）
         //exist 为false即为用户名正确，反之true为用户名不存在，抛出业务异常用户名或者密码错误
         boolean exist = cache.isExist(RedisConstants.USER_REGISTER_USERNAME_UNIQUE_KEY, username);
         if (exist) {
             throw new BusinessException(ResultCode.USERNAME_PASSWORD_ERROR);
         }
+
         //3.存在————根据用户名查找对象，获取密码进行比对，如果不一样抛出异常用户名或密码错误
         UserEntity userEntity = userRepository.findUserEntityByUsername(username);
         if (!userEntity.getPassword().equals(password)) {
             throw new BusinessException(ResultCode.USERNAME_PASSWORD_ERROR);
         }
+
         //4.判断是否激活用户，如果未激活提示用户激活，如果已经激活，则提示登录成功
         Integer isActivate = userEntity.getIsActivate();
 
         //如果激活状态是0，提示用户未激活
         if (isActivate == UserConstants.USER_REGISTER_IS_NOT_ACTIVATE_STATUS) {
+
             //更改激活状态（用户激活操作略，为了方便放在这里，实际开发并不是）
             userEntity.setIsActivate(UserConstants.USER_REGISTER_IS_ACTIVATE_STATUS);
+
             // 5.保存到数据库 jpa
             userRepository.save(userEntity);
             throw new BusinessException(ResultCode.USERNAME_IS_NOT_ACTIVATE);

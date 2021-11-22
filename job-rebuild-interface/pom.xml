@@ -10,6 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>job-rebuild-interface</artifactId>
+    <dependencies><dependency>
+        <groupId>org.example</groupId>
+        <artifactId>job-rebuild-pojo</artifactId>
+    </dependency></dependencies>
 
 
 </project>

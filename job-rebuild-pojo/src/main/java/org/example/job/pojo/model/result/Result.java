@@ -2,12 +2,13 @@ package org.example.job.pojo.model.result;
 
 import org.example.job.pojo.model.enums.ResultCode;
 
+import java.io.Serializable;
 
 
 /**
  * @author 85217
  */
-public class Result {
+public class Result implements Serializable {
 
     private int code;
     private String msg;

@@ -1,21 +1,8 @@
 spring:
   application:
-    name: dubbo-provider
-
-  datasource:
-    url: jdbc:mysql://127.0.0.1:3306/job?characterEncoding=utf8&serverTimezone=Asia/Shanghai
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: root
-
-  mail:
-    protocol: smtp
-    host: smtp.qq.com
-    username: 852179641@qq.com
-    password: xkcqydvoatekbcad
-    default-encoding: UTF-8
-
-  jpa:
-    show-sql: true
+    name: dubbo-consumer
+dubbo:
+  registry:
+    address: zookeeper://127.0.0.1:2181
 server:
-  port: 8001
+  port: 9000

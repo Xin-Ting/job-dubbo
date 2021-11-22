@@ -75,6 +75,11 @@
                 <artifactId>job-rebuild-api</artifactId>
                 <version>${project.job.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>job-rebuild-interface</artifactId>
+                <version>${project.job.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

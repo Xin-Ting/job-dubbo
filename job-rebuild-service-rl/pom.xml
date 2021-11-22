@@ -21,6 +21,11 @@
             <groupId>org.example</groupId>
             <artifactId>job-rebuild-service-mail</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>job-rebuild-interface</artifactId>
+        </dependency>
     </dependencies>
 
 
